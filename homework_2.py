@@ -2,14 +2,13 @@
 # Напиши программу, которая запрашивает у пользователя строку и определяет,
 # является ли она палиндромом (читается одинаково в обе стороны).
 
-orig_frase = str(input('Введите что хотите: '))
-no_space_frase = (orig_frase.replace(' ', ''))
-inv_frase = (no_space_frase[: : -1])
-no_space_inv = (inv_frase.replace(' ', ''))
+orig_phrase = str(input('Введите что хотите: '))
+no_space_phrase = (orig_phrase.replace(' ', ''))
+inv_phrase = (no_space_phrase[: : -1])
 
-if orig_frase.isalpha() == False:
+if orig_phrase.isalpha() == False:
     print('Вы ввели некорректное значение')
-elif no_space_frase.lower() == no_space_inv.lower():
+elif no_space_phrase.lower() == inv_phrase.lower():
     print('Это палиндром')
 else:
     print('Слово или фраза не является палиндромом')
@@ -22,9 +21,9 @@ else:
 # (поможет метод lower())
 
 students = ('Сергей', 18, 50)
-name = (students[0])
-age = (students[1])
-score = (students[2])
+name = students[0]
+age = students[1]
+score = students[2]
 answer = input('Вы можете вывести  \n 1.Имя \n 2.Возраст  \n 3.Средний балл. \nЯ хочу вывести: ')
 if answer.lower() == 'имя' or answer.lower() == '1':
     print(name)
@@ -61,9 +60,9 @@ else:
 # которые он хочет увидеть из начала и конца списка. Выведи соответствующие срезы
 we_have = (12,45,24,67,54,90,256,100,567,778)
 answer_numbers = int(input('У нас список из 10 чисел. \nВведите количество чисел, которые вы хотите увидеть из начала и конца списка: '))
-print('Из начала списка', we_have[: answer_numbers :])
-from_the_end = (answer_numbers+1)*-1
-print('Из конца списка', we_have[: from_the_end :-1])
+a = we_have[:answer_numbers]
+b = we_have[-answer_numbers:]
+print(f'Из начала списка: {a}\n Из конца списка: {b}' )
 
 # Внизу можно посмотреть на начальное решение задание и из чего я выстроила
 # Финальный вариант решения

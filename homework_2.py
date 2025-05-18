@@ -3,8 +3,8 @@
 # является ли она палиндромом (читается одинаково в обе стороны).
 
 orig_phrase = str(input('Введите что хотите: '))
-no_space_phrase = (orig_phrase.replace(' ', ''))
-inv_phrase = (no_space_phrase[: : -1])
+no_space_phrase = orig_phrase.replace(' ', '')
+inv_phrase = no_space_phrase[: : -1]
 
 if orig_phrase.isalpha() == False:
     print('Вы ввели некорректное значение')

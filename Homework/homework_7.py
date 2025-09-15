@@ -1,4 +1,5 @@
-# Создать программу на Python, позволяющее пользователю управлять коллекцией книг.
+
+try:# Создать программу на Python, позволяющее пользователю управлять коллекцией книг.
 # Программа будет поддерживать функции добавления, поиска и хранения книг в текстовом файле.
 # Тут мы используем уже знакомый тебе бесконечный цикл while True, в рамках которого
 # по вводу определённой цифры, программа будет делать соответствующее действие
@@ -44,8 +45,7 @@
 # 6. Сохранение новых данных в файл:
 #    - Перед завершением работы
 # программа должна сохранять обновленный список книг обратно в текстовый файл в указанном формате.
-try:
-    with open('homework_7.txt', 'r') as books:
+    with open('library_application/test_library.txt', 'r') as books:
         book_list = []
         for line in books:
             parts = line.split('|')
@@ -89,8 +89,10 @@ while True:
                 continue
             else:
                 list_after_deleting.append(book)
-                for book in list_after_deleting:
-                    print(f'{book[0]}, {book[1]}, {book[2]}')
+                # for book in list_after_deleting:
+                    # print(f'{book[0]}, {book[1]}, {book[2]}')
+
+        book_list = list_after_deleting
     elif answer == '4':
         print('Ваш список книг: \n')
         for book in book_list:
@@ -99,6 +101,10 @@ while True:
             print('В списке нет книг')
 
     elif answer == '5':
+        with open('library_application/test_library.txt', 'w') as books:
+            for book in book_list:
+                books.write(f'{book[0]}|{book[1]}|{book[2]}')
+
         break
     else:
         print('По вашему запросу нет доступного действия. \nПожалуйста выберите действие из списка:')

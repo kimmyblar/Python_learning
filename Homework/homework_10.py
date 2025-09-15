@@ -1,5 +1,5 @@
 import time
-
+#
 # 1) Дан список чисел от 10 до 100.
 # Верни новый список, где если число делится на 3 — оставляем его как есть, иначе — заменяем на None.
 # Реализуй при помощи лямбда выражений и map
@@ -9,12 +9,15 @@ list_of_numbers = list(range(10, 101))
 final_list = list(map(lambda x: x if x % 3 == 0 else None, list_of_numbers))
 print(final_list)
 
-
-# 2) Дан список слов и строка с гласными.
-words = ["яблоко", "банан", "апельсин", "слива", "арбуз"]
-vowels = "аеёиоуыэюя"
-result = [word.upper() for word in words if word[0].lower() in vowels]
-print(result)
+list_of_numbers = list(range(10, 101))
+print([x if x % 3 == 0 else None for x in list_of_numbers ])
+#
+#
+# # 2) Дан список слов и строка с гласными.
+# words = ["яблоко", "банан", "апельсин", "слива", "арбуз"]
+# vowels = "аеёиоуыэюя"
+# result = [word.upper() for word in words if word[0].lower() in vowels]
+# print(result)
 # При помощи list comprehension оставь только слова,
 # начинающиеся с гласной, и переведи их в верхний регистр.
 
@@ -29,18 +32,19 @@ print(result)
 # а потом внутри wrapper сделать вот такой хинт nonlocal counter,
 # и дальше уже сможешь его спокойно увеличивать) Это не частый кейс, но неплохо знать что и такое бывает)
 
-def count_calls(func):
-    counter = {'count': 0}
-    def wrapper():
-        counter['count'] += 1
-        print(f"Функция была вызвана {counter['count']} раз(а)")
-    return wrapper
-
-@count_calls
-def say_hello():
-    time.sleep(3)
-    print('Привет')
-
-say_hello()
-say_hello()
-say_hello()
+# def count_calls(func):
+#     counter = {'count': 0}
+#     def wrapper():
+#         counter['count'] += 1
+#         func()
+#         print(f"Функция была вызвана {counter['count']} раз(а)")
+#     return wrapper
+#
+# @count_calls
+# def say_hello():
+#     time.sleep(3)
+#     print('Привет')
+#
+# say_hello()
+# say_hello()
+# say_hello()

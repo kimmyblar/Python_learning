@@ -5,62 +5,58 @@ def load_books(filename):
             for line in books:
                 parts = line.split('|')
                 title, author, year = parts[0], parts[1], parts[2]
-                book_list.append((title, author, year))
-            return book_list
+                book_list.append ((title, author, year))
     except FileNotFoundError:
         print('Файл не найден, продолжаем работу с пустым файлом')
         return []
 
-def print_books(book_list):
-    for book in book_list:
-        print(f'{book[0]}, {book[1]}, {book[2]}')
-
 def add_book(book_list):
-    title = input('Введите название книги: ')
-    author = input('Введите автора: ')
-    year = input('Введите год издания: ')
+    title = input('Введите название книги')
+    author = input('Введите автора')
+    year = int(input('Введите год издания'))
     book_list.append((title, author, year))
 
 def search_book(book_list):
-    search = input('Введите автора или название книги, которую хотите найти: ').lower()
+    search = input('Введите автора или название книги, которую хотите найти: ')
     result = []
     for book in book_list:
         if search in book[0].lower() or search in book[1].lower():
             result.append(book)
     if result:
         print('Найденные книги:')
-        print_books(result)
+    for book in result:
+        print(f'{book[0]}, {book[1]}, {book[2]}')
     else:
         print('Книги не найдено или она не существует')
 
 def delete_book(book_list):
-    user_delete = input('Введите автора или название книги, которую хотите удалить: ').lower()
+    user_delete = input('Введите автора или название книги, которую хотите удалить: ')
     list_after_deleting = []
     list_of_deleted_books = []
     for book in book_list:
         if user_delete in book[0].lower() or user_delete in book[1].lower():
             list_of_deleted_books.append(book)
+            for book in list_of_deleted_books:
+                print(f'Вы удалили книгу: {book[0]}, {book[1]}, {book[2]}')
+            continue
         else:
             list_after_deleting.append(book)
-    print(f'Вы удалили книгу: ')
-    print_books(list_of_deleted_books)
-    if not list_of_deleted_books:
-        print('Книга не найдена')
-    return list_after_deleting
-
+            book_list = list_after_deleting
 
 def show_books(book_list):
+    print('Ваш список книг: \n')
+    for book in book_list:
+        print(f'{book[0]},{book[1]},{book[2]}')
     if not book_list:
         print('В списке нет книг')
-    else:
-        print('Ваш список книг:')
-        print_books(book_list)
 
-def break_program(book_list, filename):
+def break_programm(book_list, filename):
     with open(filename, 'w') as books:
         for book in book_list:
-            books.write(f'{book[0]}|{book[1]}|{book[2]}')
-    print('Список книг сохранён. До свидания!')
+           books.write(f'{book[0]}|{book[1]}|{book[2]}')
+           break
+        else:
+            print('По вашему запросу нет доступного действия. \nПожалуйста выберите действие из списка:')
 
 def we_work_with():
     filename = 'library_application/test_library.txt'
@@ -79,15 +75,12 @@ def we_work_with():
         elif answer == '2':
             search_book(book_list)
         elif answer == '3':
-            book_list = delete_book(book_list)
+            delete_book(book_list)
         elif answer == '4':
             show_books(book_list)
         elif answer == '5':
-            break_program(book_list, filename)
-            break
+            break_programm(filename, book_list)
         else:
             print('Неверный ввод. Пожалуйста, выберите действие из списка.')
 
-
 we_work_with()
-

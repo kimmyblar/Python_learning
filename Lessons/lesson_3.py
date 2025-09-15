@@ -1,5 +1,6 @@
 a = 1, 2, 3
 b = [15, 20, 9, 1, 2, 3]
+print(type(b))
 # print(id(a))
 # print(id(b))
 # a = a+a
@@ -37,6 +38,7 @@ b = [15, 20, 9, 1, 2, 3]
 
 c = [1, 1, 5, 7, 20, 7]
 print(list(set(c)))
+print(c.reverse())
 
 d = {1, 2, 3, 3, 7, 'hello', 60, 'hello', 2, 'a'}
 print(d)
